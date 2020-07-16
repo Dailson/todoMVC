@@ -25,12 +25,12 @@ public interface TaskDao {
 	/**
 	 * @param id
 	 */
-	void deletedById(Integer id);
+	void deletedById(Long id);
 	
 	/**
 	 * @param id
 	 */
-	Task findById(Integer id);
+	Task findById(Long id);
 	
 	/**
 	 * @return List<Task>

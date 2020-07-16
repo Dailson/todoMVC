@@ -16,7 +16,7 @@ import model.entities.Task;
 public class TaskDaoJPA implements TaskDao {
 
 	private EntityManager entity;
-	
+
 	public TaskDaoJPA(EntityManager entity) {
 		this.entity = entity;
 	}
@@ -42,15 +42,24 @@ public class TaskDaoJPA implements TaskDao {
 	}
 
 	@Override
-	public void deletedById(Integer id) {
+	public void deletedById(Long id) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public Task findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Task findById(Long id) {
+		Task task = null;
+		try {
+			entity.getTransaction().begin();
+			task = entity.find(Task.class, id);
+			entity.getTransaction().commit();
+		} catch (Exception e) {
+			entity.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return task;
+
 	}
 
 	@Override

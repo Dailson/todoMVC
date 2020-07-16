@@ -16,11 +16,16 @@ import model.entities.Task;
 public class TaskTest{
 
 		
-	TaskDao task = new TaskDaoJPA(DB.getEntityManager());
+	TaskDao taskDao = new TaskDaoJPA(DB.getEntityManager());
 	
 	@Test
 	public void insert() {
-		task.insert(new Task(null, "Task1"));
+		taskDao.insert(new Task(null, "Task1"));
 	}
-
+	
+	@Test
+	public void findById() {
+		Task task = taskDao.findById(1L);
+		System.out.println(task);
+	}
 }
