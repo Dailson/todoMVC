@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import db.DB;
+import model.dao.DaoFactory;
 import model.dao.TaskDao;
-import model.dao.impl.TaskDaoJPA;
 import model.entities.Task;
 
 /**
@@ -17,7 +16,7 @@ import model.entities.Task;
  */
 public class TaskTest {
 
-	TaskDao taskDao = new TaskDaoJPA(DB.getEntityManager());
+	TaskDao taskDao = DaoFactory.createPersonDao();
 
 	@Test
 	public void insert() {
