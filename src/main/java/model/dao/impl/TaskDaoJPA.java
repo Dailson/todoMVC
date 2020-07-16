@@ -50,8 +50,23 @@ public class TaskDaoJPA implements TaskDao {
 	}
 
 	@Override
-	public void deletedById(Long id) {
-		// TODO Auto-generated method stub
+	public void removeById(Long id) {
+		Task task = entity.find(Task.class, id);
+
+		if (task.getId() != null) {
+
+			try {
+				entity.getTransaction().begin();
+				entity.remove(task);
+				entity.getTransaction().commit();
+
+			} catch (Exception e) {
+				entity.getTransaction().rollback();
+				e.printStackTrace();
+			}
+		} else {
+			throw new NullPointerException("There is no record on database! It is null");
+		}
 
 	}
 

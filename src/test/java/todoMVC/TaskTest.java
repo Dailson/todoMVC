@@ -41,4 +41,9 @@ public class TaskTest {
 		List<Task> listTask = taskDao.findAll();
 		System.out.println(listTask);
 	}
+	
+	@Test
+	public void remove() {	
+		taskDao.removeById(2L);
+	}
 }

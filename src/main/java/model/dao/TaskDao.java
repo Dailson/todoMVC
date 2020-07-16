@@ -25,7 +25,7 @@ public interface TaskDao {
 	/**
 	 * @param id
 	 */
-	void deletedById(Long id);
+	void removeById(Long id);
 	
 	/**
 	 * @param id
