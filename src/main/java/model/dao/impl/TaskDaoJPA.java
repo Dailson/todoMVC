@@ -1,5 +1,6 @@
 package model.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,10 +70,21 @@ public class TaskDaoJPA implements TaskDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Task> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Task> listTask = new ArrayList<>();
+		try {
+			entity.getTransaction().begin();
+			listTask = entity.createQuery("FROM " + Task.class.getName()).getResultList();
+			entity.getTransaction().commit();
+
+		} catch (Exception e) {
+			entity.getTransaction().rollback();
+			e.printStackTrace();
+		}
+
+		return listTask;
 	}
 
 }
