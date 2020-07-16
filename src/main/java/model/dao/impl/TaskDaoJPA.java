@@ -37,8 +37,15 @@ public class TaskDaoJPA implements TaskDao {
 
 	@Override
 	public void update(Task obj) {
-		// TODO Auto-generated method stub
 
+		try {
+			entity.getTransaction().begin();
+			entity.merge(obj);
+			entity.getTransaction().commit();
+		} catch (Exception e) {
+			entity.getTransaction().rollback();
+			e.printStackTrace();
+		}
 	}
 
 	@Override

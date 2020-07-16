@@ -28,4 +28,10 @@ public class TaskTest{
 		Task task = taskDao.findById(1L);
 		System.out.println(task);
 	}
+	
+	@Test
+	public void update() {
+		Task task = new Task(1L, "NameUpdated");
+		taskDao.update(task);
+	}
 }
