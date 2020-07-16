@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import db.DbException;
 import model.dao.TaskDao;
 import model.entities.Task;
 
@@ -31,7 +32,7 @@ public class TaskDaoJPA implements TaskDao {
 
 		} catch (Exception e) {
 			entity.getTransaction().rollback();
-			e.printStackTrace();
+			throw new DbException("An error occurred while trying to INSERT a Task record into the database! Caused by " + e.getMessage());
 		}
 
 	}
@@ -45,7 +46,8 @@ public class TaskDaoJPA implements TaskDao {
 			entity.getTransaction().commit();
 		} catch (Exception e) {
 			entity.getTransaction().rollback();
-			e.printStackTrace();
+			throw new DbException("An error occurred while trying to UPDATE a Task record from the database! Caused by " + e.getMessage());
+
 		}
 	}
 
@@ -62,7 +64,7 @@ public class TaskDaoJPA implements TaskDao {
 
 			} catch (Exception e) {
 				entity.getTransaction().rollback();
-				e.printStackTrace();
+				throw new DbException("An error occurred while trying to REMOVE a Task record from the database! Caused by " + e.getMessage());
 			}
 		} else {
 			throw new NullPointerException("There is no record on database! It is null");
@@ -79,7 +81,8 @@ public class TaskDaoJPA implements TaskDao {
 			entity.getTransaction().commit();
 		} catch (Exception e) {
 			entity.getTransaction().rollback();
-			e.printStackTrace();
+			throw new DbException("An error occurred while trying to FIND BY ID a Task on the database! Caused by " + e.getMessage());
+
 		}
 		return task;
 
@@ -96,7 +99,8 @@ public class TaskDaoJPA implements TaskDao {
 
 		} catch (Exception e) {
 			entity.getTransaction().rollback();
-			e.printStackTrace();
+			throw new DbException("An error occurred while trying to FIND ALL Tasks from the database! Caused by " + e.getMessage());
+
 		}
 
 		return listTask;
