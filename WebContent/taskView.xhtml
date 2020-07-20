@@ -15,7 +15,7 @@
 		<h:panelGrid columns="3">
 			<h:outputLabel value="Name: " />
 			<h:inputText id="name" value="#{taskBean.task.name}" />
-
+			
 			<br />
 			<br />
 
@@ -23,8 +23,16 @@
 
 			<br />
 			<br />
-
 		</h:panelGrid>
+		<h:dataTable value="#{taskBean.listTask}" var="task">
+			<h:column>
+				<h:outputText value="#{task.id}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{task.name}"></h:outputText>
+			</h:column>
+		</h:dataTable>
 
 	</h:form>
 </h:body>

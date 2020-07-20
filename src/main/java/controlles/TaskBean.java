@@ -1,6 +1,11 @@
 package controlles;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import model.dao.GenericDao;
 import model.entities.Task;
@@ -16,20 +21,27 @@ public class TaskBean {
 
 	private Task task = new Task();
 	private GenericDao<Task> genericDao = new GenericDao<Task>();
+	private List<Task> listTask = new ArrayList<Task>();
 
 	
+	@PostConstruct
+	public void loadTasks() {
+		listTask = genericDao.findAll();
+	}
 	
 	// CRUD METHODS 
 	
-
 	/**
 	 * @return boolean
 	 */
 	public boolean save() {
 		genericDao.insert(task);
+		loadTasks();
 		return true;
 	}
 
+	
+	
 	
 	
 	// GETTERS AND SETTERS METHODS 
@@ -60,6 +72,22 @@ public class TaskBean {
 	 */
 	public void setGenericDao(GenericDao<Task> genericDao) {
 		this.genericDao = genericDao;
+	}
+
+
+	/**
+	 * @return the listTask
+	 */
+	public List<Task> getListTask() {
+		return listTask;
+	}
+
+
+	/**
+	 * @param listTask the listTask to set
+	 */
+	public void setListTask(List<Task> listTask) {
+		this.listTask = listTask;
 	}
 
 }
