@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import model.dao.DaoFactory;
-import model.dao.TaskDao;
+import model.dao.GenericDao;
 import model.entities.Task;
 
 /**
@@ -16,33 +15,36 @@ import model.entities.Task;
  */
 public class TaskTest {
 
-	TaskDao taskDao = DaoFactory.createPersonDao();
+	private Task task = new Task();
+	private GenericDao<Task> genericDao = new GenericDao<Task>();
 
 	@Test
 	public void insert() {
-		taskDao.insert(new Task(null, "Task1"));
+		task.setName("Task Test");
+		genericDao.insert(task);
 	}
 
 	@Test
 	public void findById() {
-		Task task = taskDao.findById(1L);
+		task = genericDao.findById(1L);
 		System.out.println(task);
 	}
 
 	@Test
 	public void update() {
-		Task task = new Task(1L, "NameUpdated");
-		taskDao.update(task);
+		task = new Task(2L, "NameUpdated2");
+		genericDao.update(task);
+	}
+
+	@Test
+	public void remove() {
+		genericDao.removeById(6L);
 	}
 
 	@Test
 	public void findAll() {
-		List<Task> listTask = taskDao.findAll();
+		List<Task> listTask = genericDao.findAll();
 		System.out.println(listTask);
 	}
-	
-	@Test
-	public void remove() {	
-		taskDao.removeById(2L);
-	}
+
 }

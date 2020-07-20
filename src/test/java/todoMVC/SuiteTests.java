@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 15 de jul de 2020
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ConnectionTest.class })
+@SuiteClasses({ ConnectionTest.class, TaskTest.class })
 public class SuiteTests {
 
 }
