@@ -1,15 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>br.com.dailson</groupId>
-  <artifactId>todoMVC</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Todo MVC</name>
-  <description>Just a simple CRUD with JSF</description>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.dailson</groupId>
+	<artifactId>todoMVC</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Todo MVC</name>
+	<description>Just a simple CRUD with JSF</description>
 
+
+	<!-- Java Runtime -->
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -49,19 +52,21 @@
 			<version>2.2.20</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
+		<!-- http://weld.cdi-spec.org/ -->
+		<!-- Dependecy Injection -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.20</version>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>8.0</version>
 		</dependency>
 	</dependencies>
-  
-  
+
+
 </project>
