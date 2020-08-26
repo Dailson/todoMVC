@@ -4,7 +4,7 @@
 	
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-	<class>#</class>	
+	<class>model.entities.Task</class>	
 		
 		<properties>
 		

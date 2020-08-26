@@ -3,9 +3,8 @@ package controlles;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import model.dao.GenericDao;
 import model.entities.Task;
@@ -16,7 +15,8 @@ import model.entities.Task;
  * @author dailson
  * @since 20 de jul de 2020
  */
-@ManagedBean(name = "taskBean")
+@Named
+@RequestScoped
 public class TaskBean {
 
 	private Task task = new Task();
@@ -24,7 +24,6 @@ public class TaskBean {
 	private List<Task> listTask = new ArrayList<Task>();
 
 	
-	@PostConstruct
 	public void loadTasks() {
 		listTask = genericDao.findAll();
 	}
@@ -34,10 +33,10 @@ public class TaskBean {
 	/**
 	 * @return boolean
 	 */
-	public boolean save() {
+	public String save() {
 		genericDao.insert(task);
 		loadTasks();
-		return true;
+		return "";
 	}
 
 	

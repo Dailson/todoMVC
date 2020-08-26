@@ -36,10 +36,10 @@ public class TaskTest {
 		genericDao.update(task);
 	}
 
-	@Test
-	public void remove() {
-		genericDao.removeById(6L);
-	}
+//	@Test
+//	public void remove() {
+//		genericDao.removeById(6L);
+//	}
 
 	@Test
 	public void findAll() {
